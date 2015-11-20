@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -15,11 +16,11 @@ public class Main {
 
 	private  static void test(int n) {
 		System.out.println(n+" getallen");
+		List<Integer> list = sort.generateList(n);
 
 		for (int i = 0; i < 10; i++) {
-			int[] list = sort.makeList(n);
 			Long start = System.currentTimeMillis();
-			int[] sorted = sort.sortInsertion(list);
+			List<Integer> sorted = sort.insertion(list);
 			Long end = System.currentTimeMillis();
 
 			System.out.println("Poging:" + (i + 1) + " " + (end - start));

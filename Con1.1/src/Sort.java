@@ -1,38 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Sort {
 
 	
-	public int[] sortInsertion(int[] list) {
-		int key;
-		int j;
-		for(int i = 1; i < list.length; i++){
-			key = list[i];
-			for(j = i - 1; (j >= 0) &&(list[j] < key); j--){
-				list[j + 1] = list[j];		
-			}
-			
-			list[j + 1] = key;
-			
-		}
-		
-		return list;
-
+	public List<Integer> insertion(List<Integer> unsorted){
+		int i,j;
+		List<Integer> list = new ArrayList<>(unsorted);
+	    for (i = 1; i < list.size(); i++) {
+	    	int number = list.get(i);
+	        j = i;
+	        while((j > 0) && (list.get(j - 1) > number)) {
+	        	list.set(j,list.get(j - 1));
+	            j--;
+	        }
+	        list.set(j,number);
+	    }
+	    return list;
 	}
-
-	/**
-	 * Lijst generegen om te sorteren
-	 * 
-	 * @param aantalGetallen
-	 * @return Een lijst
-	 */
-	public int[] makeList(int aantalGetallen) {
-		int[] list = new int[aantalGetallen];
-		for (int i = 0; i < aantalGetallen; i++) {
-			int getal = (int) (Math.random() * 10);
-			list[i] = getal;
-
+	
+	public List<Integer> generateList(int amount){
+		List<Integer> list = new ArrayList<>();
+		Random r = new Random();
+		for (int i = 0; i < amount; i++) {
+			list.add(r.nextInt(10));
 		}
-
 		return list;
 	}
 	
