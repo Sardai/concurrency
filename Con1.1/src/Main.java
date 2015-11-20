@@ -1,0 +1,29 @@
+import java.util.Arrays;
+
+public class Main {
+
+	static Sort sort = new Sort();
+	public static void main(String[] args) {
+		 test(25000);
+		 test(50000);
+		 test(100000);
+		 test(200000);
+		 test(400000);
+		 test(800000);
+		 
+	}
+
+	private  static void test(int n) {
+		System.out.println(n+" getallen");
+
+		for (int i = 0; i < 10; i++) {
+			int[] list = sort.makeList(n);
+			Long start = System.currentTimeMillis();
+			int[] sorted = sort.sortInsertion(list);
+			Long end = System.currentTimeMillis();
+
+			System.out.println("Poging:" + (i + 1) + " " + (end - start));
+		}
+	}
+
+}
