@@ -12,8 +12,6 @@ public class Sort extends Thread {
 	@Override
 	public void run() {
 		insertion(list);
-		
-
 	}
 
 	public void insertion(List<Integer> list) {
@@ -51,14 +49,7 @@ public class Sort extends Thread {
 				merged.add(getalTail);
 				counterSecond++;
 			}
-			
-			
-			
 		}
-		return merged;
-		
+		return merged;		
 	}
-	
-	
-
 }

@@ -1,1 +1,5 @@
 1448623803129	Delete elements
+1448624381633	Rename local variable 'getalTail'
+1448624530330	Rename local variable 'counterFirst'
+1448624534218	Rename local variable 'counterSecond'
+1448624955031	Rename field 'maxSize'

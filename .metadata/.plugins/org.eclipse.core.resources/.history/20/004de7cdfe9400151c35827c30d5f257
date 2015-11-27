@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
+public class Main {
+	
+	private static final int MAX_SIZE = 100;
+	
+	public static void main(String[] args) {
+		System.out.println("Maximale grote sub-array:" + MAX_SIZE);
+		 test(25000);
+		 test(50000);
+		 test(100000);
+		 test(200000);
+		 test(400000);
+		 test(800000);
+	}
+
+	/**
+	 * Lijst generegen om te sorteren
+	 * 
+	 * @param aantalGetallen
+	 * @return Een lijst
+	 */
+	public static ArrayList<Integer> makeList(int aantalGetallen) {
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int i = 0; i < aantalGetallen; i++) {
+			int getal = (int) (Math.random() * 10);
+			list.add(i, getal);
+
+		}
+
+		return list;
+	}
+
+	private static void test(int n) {
+		System.out.println(n + " getallen");
+		List<Integer> randomList = makeList(n);
+		long[] results = new long[10];
+		for (int i = 0; i < 10; i++) {
+			Long start = System.currentTimeMillis();
+			
+			List<Integer> list = new ArrayList<>(randomList);			
+			Sort sort = new Sort(list,MAX_SIZE); 
+			sort.run();
+			
+			Long end = System.currentTimeMillis();
+			results[i] = end-start;
+			//System.out.println("Poging:" + (i + 1) + " " + (end - start));
+		}
+		Arrays.sort(results);
+		long sum = 0;
+		//negeer kortste en langste running time.
+		for (int i = 1; i < results.length-1; i++) {
+			sum += results[i];
+		}
+		long average = sum / 8;
+		System.out.println("Gemiddelde: "+average);
+	}
+}

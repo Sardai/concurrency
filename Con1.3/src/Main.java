@@ -1,18 +1,21 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 	
- 
+	private static final int MAX_SIZE = 10000;
 	
 	public static void main(String[] args) {
-//		 test(25000);
-//		 test(50000);
-//		 test(100000);
-//		 test(200000);
-//		 test(400000);
-//		 test(800000);
-		test(200);
+		System.out.print(MAX_SIZE+", ");
+		 test(25000);
+		 test(50000);
+		 test(100000);
+		 test(200000);
+		 test(400000);
+		 test(800000);
+		 System.out.println();
+			System.out.println("done");
 	}
 
 	/**
@@ -33,32 +36,29 @@ public class Main {
 	}
 
 	private static void test(int n) {
-		System.out.println(n + " getallen");
+		//System.out.println(n + " getallen");
 		List<Integer> randomList = makeList(n);
-
-		//for (int i = 0; i < 10; i++) {
+		long[] results = new long[10];
+		for (int i = 0; i < 10; i++) {
 			Long start = System.currentTimeMillis();
 			
 			List<Integer> list = new ArrayList<>(randomList);			
-			List<Integer> head = list.subList(0, list.size() / 2);
-			List<Integer> tail = list.subList(list.size() / 2, list.size());
+			Sort sort = new Sort(list,MAX_SIZE); 
+			sort.run();
 			
-			Sort headSort = new Sort(head,5);
-			Sort tailSort = new Sort(tail,5);
-
-			headSort.start();
-			tailSort.start();
-
-			try {
-				headSort.join();
-				tailSort.join();
-				List<Integer> mergedList = Sort.merge(headSort.mergedList, tailSort.mergedList);
-				System.out.println("final list: " + mergedList);
-				System.out.println(mergedList.size());
-			} catch (InterruptedException e) {}
 			Long end = System.currentTimeMillis();
-
+			results[i] = end-start;
 			//System.out.println("Poging:" + (i + 1) + " " + (end - start));
-		//}
+		}
+		Arrays.sort(results);
+		long sum = 0;
+		//negeer kortste en langste running time.
+		for (int i = 1; i < results.length-1; i++) {
+			sum += results[i];
+		}
+		long average = sum / 8;
+		//System.out.println(n + " : " + average);
+		System.out.print(average+", ");
 	}
+
 }

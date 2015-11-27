@@ -28,7 +28,6 @@ public class Sort extends Thread {
 				headSort.join();
 				tailSort.join();
 				mergedList = Sort.merge(headSort.mergedList, tailSort.mergedList);
-				System.out.println(mergedList.size());
 			} catch (InterruptedException e) {}
 			
 			return;
@@ -53,32 +52,26 @@ public class Sort extends Thread {
 	
 	public static List<Integer> merge(List<Integer> first, List<Integer> second){
 		List<Integer> merged = new ArrayList<>();
-		int counterFirst = 0, counterSecond = 0;
-		while(counterFirst < first.size()|| counterSecond < second.size()){
-			int getalFirst = Integer.MAX_VALUE, getalTail = Integer.MAX_VALUE;
-				if(counterFirst < first.size()){
-					getalFirst = first.get(counterFirst);	
+		int indexFirst = 0, indexSecond = 0;
+		while(indexFirst < first.size()|| indexSecond < second.size()){			
+			int getalFirst = Integer.MAX_VALUE, getalSecond = Integer.MAX_VALUE;
+				if(indexFirst < first.size()){
+					getalFirst = first.get(indexFirst);	
 				}
 				
-				if(counterSecond < second.size()){
-					getalTail = second.get(counterSecond);	
+				if(indexSecond < second.size()){
+					getalSecond = second.get(indexSecond);	
 				}
-				
-			
-			if(getalFirst < getalTail){
+
+			if(getalFirst < getalSecond){
 				merged.add(getalFirst);
-				counterFirst++;
+				indexFirst++;
 			}else {
-				merged.add(getalTail);
-				counterSecond++;
+				merged.add(getalSecond);
+				indexSecond++;
 			}
-			
-			
-			
 		}
-		System.out.println(merged);
-		return merged;
-		
+		return merged;		
 	}
 	
 	
