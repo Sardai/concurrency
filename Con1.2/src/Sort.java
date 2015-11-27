@@ -30,26 +30,26 @@ public class Sort extends Thread {
 
 	}
 	
-	public List<Integer> merge(List<Integer> head, List<Integer> tail){
+	public static List<Integer> merge(List<Integer> first, List<Integer> second){
 		List<Integer> merged = new ArrayList<>();
-		int counterHead = 0, counterTail = 0;
-		while(counterHead < head.size()|| counterTail < tail.size()){
-			int getalHead = Integer.MAX_VALUE, getalTail = Integer.MAX_VALUE;
-				if(counterHead < head.size()){
-					getalHead = head.get(counterHead);	
+		int counterFirst = 0, counterSecond = 0;
+		while(counterFirst < first.size()|| counterSecond < second.size()){
+			int getalFirst = Integer.MAX_VALUE, getalTail = Integer.MAX_VALUE;
+				if(counterFirst < first.size()){
+					getalFirst = first.get(counterFirst);	
 				}
 				
-				if(counterTail < tail.size()){
-					getalTail = tail.get(counterTail);	
+				if(counterSecond < second.size()){
+					getalTail = second.get(counterSecond);	
 				}
 				
 			
-			if(getalHead < getalTail){
-				merged.add(getalHead);
-				counterHead++;
+			if(getalFirst < getalTail){
+				merged.add(getalFirst);
+				counterFirst++;
 			}else {
 				merged.add(getalTail);
-				counterTail++;
+				counterSecond++;
 			}
 			
 			
