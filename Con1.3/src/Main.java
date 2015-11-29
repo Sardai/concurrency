@@ -19,10 +19,9 @@ public class Main {
 	}
 
 	/**
-	 * Lijst generegen om te sorteren
-	 * 
-	 * @param aantalGetallen
-	 * @return Een lijst
+	 * Vult een lijst met random getallen
+	 * @param aantalGetallen	Hoe groot de lijst moet worden
+	 * @return de lijst
 	 */
 	public static ArrayList<Integer> makeList(int aantalGetallen) {
 		ArrayList<Integer> list = new ArrayList<>();
@@ -34,7 +33,10 @@ public class Main {
 
 		return list;
 	}
-
+	/**
+	 * Methode om de tijd hoe lang het algoritme er over doet te meten.
+	 * @param n		Aangeven hoe groot de lijst moet worden
+	 */
 	private static void test(int n) {
 		//System.out.println(n + " getallen");
 		List<Integer> randomList = makeList(n);
@@ -48,7 +50,6 @@ public class Main {
 			
 			Long end = System.currentTimeMillis();
 			results[i] = end-start;
-			//System.out.println("Poging:" + (i + 1) + " " + (end - start));
 		}
 		Arrays.sort(results);
 		long sum = 0;
@@ -57,7 +58,6 @@ public class Main {
 			sum += results[i];
 		}
 		long average = sum / 8;
-		//System.out.println(n + " : " + average);
 		System.out.print(average+", ");
 	}
 

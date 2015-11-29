@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Klasse die door middel van een Thread gaat sorteren
+ * @author Rick, Chris
+ *
+ */
+public class Sort extends Thread {
+
+	private List<Integer> list;
+
+	//Constructor
+	public Sort(List<Integer> list) {
+		this.list = list;
+	}
+
+	@Override
+	public void run() {
+		insertion(list);
+	}
+
+	/**
+	 * Sorteren van de lijst dmv insertie
+	 * @param list	Gesorteerde lijst
+	 */
+	public void insertion(List<Integer> list) {
+		int i, j;
+		for (i = 1; i < list.size(); i++) {
+			int number = list.get(i);
+			j = i;
+			while ((j > 0) && (list.get(j - 1) > number)) {
+				list.set(j, list.get(j - 1));
+				j--;
+			}
+			list.set(j, number);
+		}
+
+	}
+	
+	/**
+	 * Samenvoegen van de gesorteerde lijsten
+	 * @param first		Gesorteerde lijst 
+	 * @param second	Gesorteerde lijst
+	 * @return			Samen gevoegde lijst en gesorteerd
+	 */
+	public static List<Integer> merge(List<Integer> first, List<Integer> second){
+		List<Integer> merged = new ArrayList<>();
+		int counterFirst = 0, counterSecond = 0;
+		//Blijven lopen totdat beiden counters overeenkomen
+		while(counterFirst < first.size()|| counterSecond < second.size()){
+			int getalFirst = Integer.MAX_VALUE, getalTail = Integer.MAX_VALUE;
+				//Kijken of de first lijst nog niet klaar is
+				if(counterFirst < first.size()){
+					getalFirst = first.get(counterFirst);	
+				}
+				//Kijken of de second lijst nog niet klaar is
+				if(counterSecond < second.size()){
+					getalTail = second.get(counterSecond);	
+				}
+				
+			//Kijken welke kleiner is
+			//En de kleinste toevoegen aan de lijst
+			if(getalFirst < getalTail){
+				merged.add(getalFirst);
+				counterFirst++;
+			}else {
+				merged.add(getalTail);
+				counterSecond++;
+			}
+		}
+		return merged;		
+	}
+}

@@ -7,11 +7,19 @@ public class Sort extends Thread {
 	public List<Integer> mergedList;
 	private int maxSize;
 	
+	/**
+	 * @param list de ongesorteerde lijst
+	 * @param maxSize de drempelwaarde voor de grote van de lijst.
+	 */
 	public Sort(List<Integer> list,int maxSize) {
 		this.randomList = list;
 		this.maxSize = maxSize;
 	}
 
+	/**
+	 * Methode van de Thread
+	 * Wordt aangeroepen met start()
+	 */
 	@Override
 	public void run() {
 		
@@ -35,7 +43,10 @@ public class Sort extends Thread {
 		mergedList = new ArrayList<>(randomList);		
 		insertion(mergedList);	
 	}
-
+	/**
+	 * Sorteren van de lijst dmv insertie
+	 * @param list	Gesorteerde lijst
+	 */
 	public void insertion(List<Integer> list) {
 		int i, j;
 		for (i = 1; i < list.size(); i++) {
@@ -49,10 +60,16 @@ public class Sort extends Thread {
 		}
 
 	}
-	
+	/**
+	 * Samenvoegen van de gesorteerde lijsten dmv merge
+	 * @param first		Gesorteerde lijst 
+	 * @param second	Gesorteerde lijst
+	 * @return			Samen gevoegde lijst en gesorteerd
+	 */
 	public static List<Integer> merge(List<Integer> first, List<Integer> second){
 		List<Integer> merged = new ArrayList<>();
 		int indexFirst = 0, indexSecond = 0;
+		//Zorgen dat beide lijsten doorlopen worden
 		while(indexFirst < first.size()|| indexSecond < second.size()){			
 			int getalFirst = Integer.MAX_VALUE, getalSecond = Integer.MAX_VALUE;
 				if(indexFirst < first.size()){
@@ -62,7 +79,7 @@ public class Sort extends Thread {
 				if(indexSecond < second.size()){
 					getalSecond = second.get(indexSecond);	
 				}
-
+			//Kijken welke van de twee waarden uit de lijsten kleiner is
 			if(getalFirst < getalSecond){
 				merged.add(getalFirst);
 				indexFirst++;
@@ -73,6 +90,7 @@ public class Sort extends Thread {
 		}
 		return merged;		
 	}
+	
 	
 	
 

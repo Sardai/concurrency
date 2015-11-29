@@ -1,10 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * Deze class gaat lijsten sorteren
+ * @author Chris, Rick
+ *
+ */
 public class Sort {
-
-	
+	/**
+	 * Sorteert een lijst dmv insertie.
+	 * @param unsorted  Ongesorteerde lijst
+	 * @return de gesorteerde lijst
+	 */
 	public List<Integer> insertion(List<Integer> unsorted){
 		int i,j;
 		List<Integer> list = new ArrayList<>(unsorted);
@@ -20,6 +27,11 @@ public class Sort {
 	    return list;
 	}
 	
+	/**
+	 * Vult een lijst met random getallen
+	 * @param amount	Hoe groot de lijst moet worden
+	 * @return de lijst
+	 */
 	public List<Integer> generateList(int amount){
 		List<Integer> list = new ArrayList<>();
 		Random r = new Random();

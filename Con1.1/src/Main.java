@@ -14,7 +14,10 @@ public class Main {
 		 test(800000);
 		 
 	}
-
+	/**
+	 * Methode om de tijd hoe lang het algoritme er over doet te meten.
+	 * @param n		Aangegeven hoe groot de lijst moet worden
+	 */
 	private static void test(int n) {
 		List<Integer> list = sort.generateList(n);
 		long[] results = new long[10];

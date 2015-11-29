@@ -1,10 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasse die door middel van een Thread gaat sorteren
+ * @author Rick, Chris
+ *
+ */
 public class Sort extends Thread {
 
 	private List<Integer> list;
 
+	//Constructor
 	public Sort(List<Integer> list) {
 		this.list = list;
 	}
@@ -14,6 +20,10 @@ public class Sort extends Thread {
 		insertion(list);
 	}
 
+	/**
+	 * Sorteren van de lijst dmv insertie
+	 * @param list	Gesorteerde lijst
+	 */
 	public void insertion(List<Integer> list) {
 		int i, j;
 		for (i = 1; i < list.size(); i++) {
@@ -28,26 +38,35 @@ public class Sort extends Thread {
 
 	}
 	
+	/**
+	 * Samenvoegen van de gesorteerde lijsten dmv merge
+	 * @param first		Gesorteerde lijst 
+	 * @param second	Gesorteerde lijst
+	 * @return			Samen gevoegde lijst en gesorteerd
+	 */
 	public static List<Integer> merge(List<Integer> first, List<Integer> second){
 		List<Integer> merged = new ArrayList<>();
-		int counterFirst = 0, counterSecond = 0;
-		while(counterFirst < first.size()|| counterSecond < second.size()){
-			int getalFirst = Integer.MAX_VALUE, getalTail = Integer.MAX_VALUE;
-				if(counterFirst < first.size()){
-					getalFirst = first.get(counterFirst);	
+		int indexFirst = 0, indexSecond = 0;
+		//Blijven lopen totdat beiden counters overeenkomen
+		while(indexFirst < first.size()|| indexSecond < second.size()){
+			int getalFirst = Integer.MAX_VALUE, getalSecond = Integer.MAX_VALUE;
+				//Kijken of de first lijst nog niet klaar is
+				if(indexFirst < first.size()){
+					getalFirst = first.get(indexFirst);	
+				}
+				//Kijken of de second lijst nog niet klaar is
+				if(indexSecond < second.size()){
+					getalSecond = second.get(indexSecond);	
 				}
 				
-				if(counterSecond < second.size()){
-					getalTail = second.get(counterSecond);	
-				}
-				
-			
-			if(getalFirst < getalTail){
+			//Kijken welke kleiner is
+			//En de kleinste toevoegen aan de lijst
+			if(getalFirst < getalSecond){
 				merged.add(getalFirst);
-				counterFirst++;
+				indexFirst++;
 			}else {
-				merged.add(getalTail);
-				counterSecond++;
+				merged.add(getalSecond);
+				indexSecond++;
 			}
 		}
 		return merged;		
