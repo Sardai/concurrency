@@ -30,29 +30,13 @@ public class Main {
 		return list;
 	}
 	
-	private static void splitAndSort(List<Integer> randomList){
-		List<Integer> list = new ArrayList<>(randomList);			
-		List<Integer> head = list.subList(0, list.size() / 2);
-		List<Integer> tail = list.subList(list.size() / 2, list.size());
-		Sort headSort = new Sort(head);
-		Sort tailSort = new Sort(tail);
-
-		headSort.start();
-		tailSort.start();
-
-		try {
-			headSort.join();
-			tailSort.join();
-		} catch (InterruptedException e) {}
-	}
-	
 	private static void test(int n){
-		List<Integer> randomList = makeList(n);
+		List<Integer> list = sort.generateList(n);
 		long[] results = new long[10];
 		for (int i = 0; i < 10; i++) {
 			Long start = System.currentTimeMillis();
 			
-			splitAndSort(randomList);
+			sort.insertion(list);
 			
 			Long end = System.currentTimeMillis();
 			results[i] = end-start;			
@@ -64,8 +48,33 @@ public class Main {
 			sum += results[i];
 		}
 		long average = sum / 8;
-		System.out.println(n+", "+average);
+		System.out.println(average);
 	}
 
-	 
+	private static void test(int n) {
+		System.out.println(n + " getallen");
+		List<Integer> randomList = makeList(n);
+
+		for (int i = 0; i < 10; i++) {
+			Long start = System.currentTimeMillis();
+			
+			List<Integer> list = new ArrayList<>(randomList);			
+			List<Integer> head = list.subList(0, list.size() / 2);
+			List<Integer> tail = list.subList(list.size() / 2, list.size());
+			Sort headSort = new Sort(head);
+			Sort tailSort = new Sort(tail);
+
+			headSort.start();
+			tailSort.start();
+
+			try {
+				headSort.join();
+				tailSort.join();
+			} catch (InterruptedException e) {}
+
+			Long end = System.currentTimeMillis();
+
+			System.out.println("Poging:" + (i + 1) + " " + (end - start));
+		}
+	}
 }

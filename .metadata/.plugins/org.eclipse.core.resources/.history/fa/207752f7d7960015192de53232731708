@@ -33,7 +33,7 @@ public class Main {
 			sum += results[i];
 		}
 		long average = sum / 8;
-		System.out.println(n+", "+average);
+		System.out.println(average);
 	}
 
 }

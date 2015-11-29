@@ -52,7 +52,7 @@ public class Main {
 		for (int i = 0; i < 10; i++) {
 			Long start = System.currentTimeMillis();
 			
-			splitAndSort(randomList);
+			splitAndSort(list);
 			
 			Long end = System.currentTimeMillis();
 			results[i] = end-start;			
@@ -64,7 +64,7 @@ public class Main {
 			sum += results[i];
 		}
 		long average = sum / 8;
-		System.out.println(n+", "+average);
+		System.out.println(average);
 	}
 
 	 

@@ -15,25 +15,27 @@ public class Main {
 		 
 	}
 
-	private static void test(int n) {
+	private static void test(int n){
 		List<Integer> list = sort.generateList(n);
 		long[] results = new long[10];
 		for (int i = 0; i < 10; i++) {
 			Long start = System.currentTimeMillis();
-
+			
 			sort.insertion(list);
-
+			
 			Long end = System.currentTimeMillis();
-			results[i] = end - start;
+			results[i] = end-start;
+			//System.out.println("Poging:" + (i + 1) + " " + (end - start));
 		}
 		Arrays.sort(results);
 		long sum = 0;
-		// negeer kortste en langste running time.
-		for (int i = 1; i < results.length - 1; i++) {
+		//negeer kortste en langste running time.
+		for (int i = 1; i < results.length-1; i++) {
 			sum += results[i];
 		}
 		long average = sum / 8;
-		System.out.println(n+", "+average);
+		//System.out.println(n + " : " + average);
+		System.out.print(average+", ");
 	}
 
 }
