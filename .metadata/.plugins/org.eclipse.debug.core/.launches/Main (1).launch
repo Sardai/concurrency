@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Con1.2"/>
+<listEntry value="/ZweinenbergRotterOpgave1/src/opdr1_2/Main.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-<listEntry value="4"/>
+<listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Main"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Con1.2"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="opdr1_2.Main"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ZweinenbergRotterOpgave1"/>
 </launchConfiguration>
